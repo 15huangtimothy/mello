@@ -8,46 +8,20 @@ class Login extends Component {
         return (
             <div className="container login-container">
                 <div className="row">
-                    <div className="col-md-6 col-md-offset-3 text-center center-block login-col">
-                        <LoginForm />
+                    <div className="col-lg-6 col-lg-offset-3 text-center center-block">
+                        <h1 className="title">mello.</h1>
+                        <button
+                            onClick={this.props.onLogin}
+                            type="button"
+                            className="btn btn-primary login-btn"
+                        >
+                            <h6>Log In with Trello</h6>
+                        </button>
                     </div>
                 </div>
             </div>
         );
     }
-}
-
-function LoginForm(props) {
-    return (
-        <React.Fragment>
-            <h1 className="title">mello.</h1>
-            <form class="login-form">
-                <input
-                    class="form-control"
-                    type="email"
-                    name="loginEmail"
-                    id="loginEmail"
-                    placeholder="Email address"
-                    required
-                />
-                <input
-                    class="form-control"
-                    type="password"
-                    name="loginPass"
-                    id="loginPass"
-                    placeholder="Password"
-                    required
-                />
-                <button
-                    /**onClick={this.props.onLogin}*/
-                    type="button"
-                    className="login-btn btn"
-                >
-                    Log In
-                </button>
-            </form>
-        </React.Fragment>
-    );
 }
 
 export default Login;
