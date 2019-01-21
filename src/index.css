@@ -1,0 +1,25 @@
+body {
+    position: relative;
+    background-color: #01579b;
+    font-family: "Open Sans", sans-serif;
+}
+
+button {
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+}
+
+.center-block {
+    margin: 0 auto;
+    float: none;
+}
+
+/** Global Variables */
+:root {
+    --main-blue: #133d5e;
+    --accent-blue: #01579b;
+}
+
+/** Fonts */
+@import url("https://fonts.googleapis.com/css?family=Courgette|Open+Sans");
