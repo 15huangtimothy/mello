@@ -2,6 +2,7 @@ class TrelloHandler {
     constructor(Trello) {
         this.Trello = Trello;
         this.authorized = false;
+        this.boards = null;
     }
 
     authorize = callback => {
@@ -18,7 +19,7 @@ class TrelloHandler {
                 callback(true);
                 this.authorized = true;
                 console.log("Authorization Successful");
-            },
+            }.bind(this),
             error: function() {
                 callback(false);
                 console.log("Authorization Failed");
@@ -26,9 +27,23 @@ class TrelloHandler {
         });
     };
 
-    isAuthorized() {
-        return this.authorized;
-    }
+    loadBoards = success => {
+        /**
+         * Gets user's active boards. success is callback function that takes
+         * board list argument.
+         */
+        this.Trello.get(
+            "/members/me/boards?filter=open",
+            function(b) {
+                console.log("Boards loaded");
+                success(b);
+                this.boards = b;
+            }.bind(this),
+            function() {
+                console.log("Failed to load boards");
+            }
+        );
+    };
 }
 
 export default TrelloHandler;

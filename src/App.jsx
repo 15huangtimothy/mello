@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
-import Login from "./components/login";
-import Main from "./components/main";
+import Login from "./components/Login/Login";
+import Main from "./components/Main/Main.jsx";
 import TrelloHandler from "./TrelloHandler.js";
 
 class App extends Component {
@@ -27,7 +27,7 @@ class App extends Component {
         if (!this.state.authorized) {
             return <Login onLogin={this.onLogin} />;
         } else {
-            return <Main />;
+            return <Main trelloHandler={this.Trello} />;
         }
     }
 }

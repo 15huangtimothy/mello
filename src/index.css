@@ -1,13 +1,7 @@
 body {
     position: relative;
-    background-color: #01579b;
-    font-family: "Helvetica Neue", Helvetica;
-}
-
-button {
-    font-style: normal;
-    font-weight: bold;
-    line-height: normal;
+    background-color: var(--backgroundGray);
+    font-family: proxima-nova, sans-serif;
 }
 
 .center-block {
@@ -17,9 +11,19 @@ button {
 
 /** Global Variables */
 :root {
-    --main-blue: #133d5e;
-    --accent-blue: #01579b;
+    --primaryBlue: #01579b;
+    --lakeBlue: #004baf;
+    --riverBlue: #097dbc;
+    --melloBlue: #049fd9;
+    --mediumBlue: #34adde;
+    --statusBlue: #64bbe3;
+    --icyBlue: #c4d6ed;
+    --darkGray1: #39393b;
+    --darkGray2: #626469;
+    --mediumGray1: #9e9ea2;
+    --lightGray1: #c6c7ca;
+    --lightGray2: #e9e9e9;
+    --paleGray1: #e8ebf1;
+    --backgroundGray: #eee;
+    --foregroundWhite: #fafafa;
 }
-
-/** Fonts */
-@import url("https://fonts.googleapis.com/css?family=Courgette|Open+Sans");
