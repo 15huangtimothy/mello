@@ -1,0 +1,44 @@
+.navbar {
+    background: rgba(4, 159, 217, 0.7);
+    text-align: center;
+    padding: 0.5rem 1rem;
+}
+
+.navbar-title {
+    line-height: 0;
+    font-weight: 100;
+    font-size: 1.75rem;
+    color: white;
+    margin: 0 auto;
+    opacity: 0.9;
+    text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.15);
+}
+
+.select-board {
+    width: 100%;
+    max-width: 50%;
+    margin: 0 auto 0 0;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0.8rem;
+    height: 1.5rem;
+}
+
+.navbar .account-icon {
+    color: white;
+}
+
+@media screen and (min-width: 768px) {
+    .navbar-brand-centered {
+        position: absolute;
+        left: 50%;
+        display: block;
+        width: 160px;
+        text-align: center;
+        background-color: #eee;
+    }
+    .navbar > .container .navbar-brand-centered,
+    .navbar > .container-fluid .navbar-brand-centered {
+        margin-left: -80px;
+    }
+}

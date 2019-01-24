@@ -1,6 +1,7 @@
 body {
     position: relative;
     background-color: var(--backgroundGray);
+    background-size: cover;
     font-family: proxima-nova, sans-serif;
 }
 

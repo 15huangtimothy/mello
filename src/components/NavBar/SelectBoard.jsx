@@ -22,17 +22,15 @@ class SelectBoard extends Component {
 
     render() {
         return (
-            <div className="container">
-                <select
-                    className="browser-default custom-select"
-                    onChange={this.props.onSelect}
-                >
-                    <option key={0} value={0}>
-                        Select Board
-                    </option>
-                    {this.state.boards && this.generateBoardList()}
-                </select>
-            </div>
+            <select
+                className="form-control select-board"
+                onChange={this.props.onSelect}
+            >
+                <option key={-1} value={-1}>
+                    Select Board
+                </option>
+                {this.state.boards && this.generateBoardList()}
+            </select>
         );
     }
 }

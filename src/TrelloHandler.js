@@ -29,8 +29,7 @@ class TrelloHandler {
 
     loadBoards = success => {
         /**
-         * Gets user's active boards. success is callback function that takes
-         * board list argument.
+         * Gets user's active boards. Returns board list with success callback function.
          */
         this.Trello.get(
             "/members/me/boards?filter=open",
@@ -41,6 +40,24 @@ class TrelloHandler {
             }.bind(this),
             function() {
                 console.log("Failed to load boards");
+            }
+        );
+    };
+
+    getBoard = (boardID, success) => {
+        /**
+         * Gets Trello board object from board ID. Returns board object with success callback function.
+         */
+        if (boardID === "-1") {
+            return;
+        }
+        this.Trello.get(
+            "/boards/" + boardID,
+            function(b) {
+                success(b);
+            },
+            function() {
+                console.log("Failed to get board: " + boardID);
             }
         );
     };
