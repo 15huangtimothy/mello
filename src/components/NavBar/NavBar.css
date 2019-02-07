@@ -2,6 +2,9 @@
     background: rgba(4, 159, 217, 0.7);
     text-align: center;
     padding: 0.5rem 1rem;
+    box-shadow: 0 0.06rem 0.3rem 0 rgba(0, 0, 0, 0.2),
+        0 0.1rem 0.1rem 0 rgba(0, 0, 0, 0.14),
+        0 0.2rem 0.1rem -0.1rem rgba(0, 0, 0, 0.12);
 }
 
 .navbar-title {
@@ -21,11 +24,16 @@
     cursor: pointer;
     display: inline-block;
     font-size: 0.8rem;
-    height: 1.5rem;
+    height: 1.75rem;
 }
 
-.navbar .account-icon {
+.account-icon {
     color: white;
+    transition: all 0.15s ease;
+}
+
+.account-icon:hover {
+    color: var(--backgroundGray);
 }
 
 @media screen and (min-width: 768px) {

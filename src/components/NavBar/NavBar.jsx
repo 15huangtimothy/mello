@@ -3,7 +3,23 @@ import SelectBoard from "./SelectBoard";
 import "./NavBar.css";
 
 class NavBar extends Component {
-    state = {};
+    state = { memberID: null };
+    constructor(props) {
+        super(props);
+        this.props.trelloHandler.getMember(m => {
+            this.setState({ memberID: m.id });
+        });
+    }
+
+    generateAccountLink = () => {
+        /** Generates a link to the user's Trello account settings page */
+        if (this.state.memberID) {
+            return "https://trello.com/" + this.state.memberID + "/account";
+        } else {
+            return "#";
+        }
+    };
+
     render() {
         return (
             <nav className="navbar">
@@ -21,9 +37,14 @@ class NavBar extends Component {
                     <h1 className="title navbar-title align-middle">mello.</h1>
                 </div>
                 <div className="col-sm-3 text-right">
-                    <i className="material-icons account-icon align-middle">
-                        account_circle
-                    </i>
+                    <a
+                        href={this.generateAccountLink()}
+                        className="account-icon align-middle"
+                    >
+                        <i className="material-icons align-middle">
+                            account_circle
+                        </i>
+                    </a>
                 </div>
             </nav>
         );
