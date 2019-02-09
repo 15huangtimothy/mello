@@ -8,29 +8,46 @@ class TList extends Component {
 
     render() {
         return (
-            <div className="card t-list">
-                <div className="card-header">
-                    <h3>Hi</h3>
-                </div>
-                <Droppable droppableId={this.props.column.id}>
-                    {(provided, snapshot) => (
+            <Draggable
+                draggableId={this.props.column.id}
+                index={this.props.index}
+            >
+                {provided => (
+                    <div
+                        className="card t-list"
+                        {...provided.draggableProps}
+                        ref={provided.innerRef}
+                    >
                         <div
-                            className="list-item-container"
-                            ref={provided.innerRef}
-                            {...provided.droppableProps}
+                            className="card-header"
+                            {...provided.dragHandleProps}
                         >
-                            {this.props.tasks.map((task, index) => (
-                                <ListItem
-                                    key={task.id}
-                                    task={task}
-                                    index={index}
-                                />
-                            ))}
-                            {provided.placeholder}
+                            <p>{this.props.column.name}</p>
                         </div>
-                    )}
-                </Droppable>
-            </div>
+                        <Droppable
+                            droppableId={this.props.column.id}
+                            type="task"
+                        >
+                            {(provided, snapshot) => (
+                                <div
+                                    className="list-item-container"
+                                    ref={provided.innerRef}
+                                    {...provided.droppableProps}
+                                >
+                                    {this.props.tasks.map((task, index) => (
+                                        <ListItem
+                                            key={task.id}
+                                            task={task}
+                                            index={index}
+                                        />
+                                    ))}
+                                    {provided.placeholder}
+                                </div>
+                            )}
+                        </Droppable>
+                    </div>
+                )}
+            </Draggable>
         );
     }
 }

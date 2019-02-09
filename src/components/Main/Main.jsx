@@ -3,7 +3,7 @@ import NavBar from "../NavBar/NavBar";
 import Board from "../Board/Board";
 
 class Main extends Component {
-    state = { selectedBoard: null };
+    state = { selectedBoard: null, lists: null };
 
     handleClick = () => {
         console.log(this.props.trelloHandler.boards);
@@ -17,7 +17,10 @@ class Main extends Component {
                 this.setState({ selectedBoard: b }, this.boardSelected);
             },
             () => {
-                this.setState({ selectedBoard: null }, this.boardDeselected);
+                this.setState(
+                    { selectedBoard: null, lists: null },
+                    this.boardDeselected
+                );
             }
         );
     };
@@ -25,11 +28,17 @@ class Main extends Component {
     boardSelected = () => {
         /** Executes once a board is selected */
         this.setBackground(true);
+
+        this.props.trelloHandler.getListTaskData(
+            this.state.selectedBoard.id,
+            this.loadLists
+        );
     };
 
     boardDeselected = () => {
         /** Executes when no board is selected */
         this.setBackground(false);
+        this.props.trelloHandler.resetTaskData();
     };
 
     setBackground = selected => {
@@ -42,6 +51,20 @@ class Main extends Component {
         }
     };
 
+    loadLists = l => {
+        /**
+         * Callback function when list/task data is done processing by TrelloHandler.
+         * List/task data returned through l.
+         */
+        this.setState({ lists: null });
+        this.setState({ lists: l });
+    };
+
+    generateBoard() {
+        /** Returns Board object containing loaded lists and tasks */
+        return <Board lists={this.state.lists} />;
+    }
+
     render() {
         return (
             <div>
@@ -49,10 +72,10 @@ class Main extends Component {
                     trelloHandler={this.props.trelloHandler}
                     onSelect={this.handleSelect}
                 />
-                <Board />
+                {this.state.lists && this.generateBoard()}
             </div>
         );
     }
 }
-
+// {this.state.boards && this.generateBoardList()}
 export default Main;

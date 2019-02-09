@@ -1,7 +1,17 @@
 .list-item {
-    border: 0.06em solid lightgrey;
-    border-radius: 0.3em;
-    padding: 0.4em;
-    margin-bottom: 0.4em;
+    border: 0.06rem solid lightgrey;
+    border-radius: 0.3rem;
+    padding: 0.4rem;
+    margin-bottom: 0.4rem;
     background-color: white;
+    transition: background-color 0.1s ease;
+}
+
+.list-item:hover {
+    background: #f6f6f6;
+}
+
+.drag-shadow {
+    box-shadow: 0 0.1rem 0.2rem -0.05rem rgba(0, 0, 0, 0.05),
+        0 0.2rem 0.25rem 0 rgba(0, 0, 0, 0.1);
 }

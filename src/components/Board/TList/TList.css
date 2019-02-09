@@ -5,6 +5,7 @@
     box-shadow: rgba(0, 0, 0, 0.15) 0 0.06rem 0.06rem 0,
         rgba(0, 0, 0, 0.01) 0 0.06rem 0.1rem 0;
     border: 0.06rem solid #ebebeb;
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -12,5 +13,6 @@
 .list-item-container {
     padding: 3%;
     flex-grow: 1;
-    min-height: 8em;
+    min-height: 5rem;
+    width: 100%;
 }

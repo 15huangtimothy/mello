@@ -3,14 +3,12 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import TList from "./TList/TList";
 import "./Board.css";
 
-import initialData from "./initial-data";
-
 class Board extends Component {
-    state = { data: initialData };
+    state = { data: this.props.lists };
 
     onDragEnd = result => {
         /** Handle drag for list items */
-        const { destination, source, draggableId } = result;
+        const { destination, source, draggableId, type } = result;
 
         if (!destination) {
             // If dragged out of area
@@ -21,6 +19,20 @@ class Board extends Component {
             destination.index === source.index
         ) {
             // If dragged back to same place
+            return;
+        }
+
+        if (type === "column") {
+            // If dragging entire columns
+            const newColumnOrder = Array.from(this.state.data.columnOrder);
+            newColumnOrder.splice(source.index, 1);
+            newColumnOrder.splice(destination.index, 0, draggableId);
+
+            const newData = {
+                ...this.state.data,
+                columnOrder: newColumnOrder
+            };
+            this.setState({ data: newData });
             return;
         }
 
@@ -67,25 +79,47 @@ class Board extends Component {
     };
 
     render() {
-        return (
-            <DragDropContext onDragEnd={this.onDragEnd}>
-                <div className="container container-board">
-                    {this.state.data.columnOrder.map(columnId => {
-                        const column = this.state.data.columns[columnId];
-                        const tasks = column.taskIds.map(
-                            taskId => this.state.data.tasks[taskId]
-                        );
-                        return (
-                            <TList
-                                key={column.id}
-                                column={column}
-                                tasks={tasks}
-                            />
-                        );
-                    })}
-                </div>
-            </DragDropContext>
-        );
+        if (this.state.data) {
+            return (
+                <DragDropContext onDragEnd={this.onDragEnd}>
+                    <Droppable
+                        droppableId="all-columns"
+                        direction="horizontal"
+                        type="column"
+                    >
+                        {provided => (
+                            <div
+                                className="container container-board"
+                                {...provided.droppableProps}
+                                ref={provided.innerRef}
+                            >
+                                {this.state.data.columnOrder.map(
+                                    (columnId, index) => {
+                                        const column = this.state.data.columns[
+                                            columnId
+                                        ];
+                                        const tasks = column.taskIds.map(
+                                            taskId =>
+                                                this.state.data.tasks[taskId]
+                                        );
+                                        return (
+                                            <TList
+                                                key={column.id}
+                                                column={column}
+                                                tasks={tasks}
+                                                index={index}
+                                            />
+                                        );
+                                    }
+                                )}
+                                {provided.placeholder}
+                            </div>
+                        )}
+                    </Droppable>
+                </DragDropContext>
+            );
+        }
+        return null;
     }
 }
 

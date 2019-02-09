@@ -4,6 +4,7 @@ class TrelloHandler {
         this.authorized = false;
         this.boards = null;
         this.member = null;
+        this.taskData = { tasks: {}, columns: {}, columnOrder: [] };
     }
 
     authorize = callback => {
@@ -34,7 +35,7 @@ class TrelloHandler {
             "/members/me",
             function(m) {
                 success(m);
-                console.log("Member loaded succesfully");
+                console.log("User loaded succesfully");
             },
             function() {
                 console.log("Failed to load member");
@@ -77,6 +78,83 @@ class TrelloHandler {
                 console.log("Failed to get board: " + boardID);
             }
         );
+    };
+
+    resetTaskData = () => {
+        /** Reset taskData variable */
+        this.taskData = { tasks: {}, columns: {}, columnOrder: [] };
+    };
+
+    getListTaskData = (boardID, success) => {
+        /**
+         * Gets all the lists on a given board with boardID. Return a successfully parsed lists
+         * and tasks data object for Drag and Drop functionality through the success callback.
+         */
+        this.resetTaskData();
+
+        this.Trello.get(
+            "/boards/" + boardID + "/lists",
+            function(lists) {
+                console.log("Lists loaded succesfully");
+                this.getTasksFromLists(lists, success);
+            }.bind(this),
+            function() {
+                console.log("Failed to load lists");
+            }
+        );
+    };
+
+    getTasksFromLists = (lists, success) => {
+        /**
+         * Gets all the tasks from a set of lists from the lists argument. Return a successfully
+         * parsed lists and tasks data object for Drag and Drop functionality through the success
+         * callback.
+         */
+        if (lists.length === 0) {
+            // Check if board contains lists.
+            success(this.taskData);
+            console.log("Successfully parsed list/task data");
+        }
+
+        // Loop through each list in the board to get and process each list's set of tasks
+        console.log("Getting Tasks");
+        var itemsProcessed = 0;
+        lists.forEach(element => {
+            this.Trello.get(
+                "/lists/" + element.id + "/cards",
+                function(tasks) {
+                    this.processTaskData({ ...element, tasks });
+                    itemsProcessed++;
+                    if (itemsProcessed === lists.length - 1) {
+                        // Check if all task data has finished fetching.
+                        success(this.taskData);
+                        console.log("Successfully parsed list/task data");
+                    }
+                }.bind(this),
+                function() {
+                    console.log("Failed to load cards");
+                }
+            );
+        });
+    };
+
+    processTaskData = data => {
+        /**
+         * Format the input task list data from fetch operations to be used by Drag and
+         * Drop functionality and returns through the global taskData variable
+         */
+        // Generate columns data.
+        this.taskData.columns[data.id] = {
+            ...data,
+            taskIds: []
+        };
+        // Generate tasks data
+        data.tasks.forEach(element => {
+            this.taskData.columns[data.id].taskIds.push(element.id);
+            this.taskData.tasks[element.id] = { ...element };
+        });
+        // Generate columnOrder data
+        this.taskData.columnOrder.push(data.id);
     };
 }
 
