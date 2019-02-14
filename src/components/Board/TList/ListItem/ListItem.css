@@ -5,13 +5,14 @@
     margin-bottom: 0.4rem;
     background-color: white;
     transition: background-color 0.1s ease;
+    font-size: 0.9rem;
 }
 
 .list-item:hover {
     background: #f6f6f6;
 }
 
-.drag-shadow {
+.on-drag {
     box-shadow: 0 0.1rem 0.2rem -0.05rem rgba(0, 0, 0, 0.05),
         0 0.2rem 0.25rem 0 rgba(0, 0, 0, 0.1);
 }

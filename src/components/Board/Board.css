@@ -1,5 +1,14 @@
 .container-board {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    width: 95%;
+    padding: 0;
+    margin: 1rem auto;
+}
+
+.grid-sizer,
+.grid-item {
+    width: 19%;
+}
+
+.gutter-sizer {
+    width: 1%;
 }

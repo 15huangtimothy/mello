@@ -125,7 +125,7 @@ class TrelloHandler {
                 function(tasks) {
                     this.processTaskData({ ...element, tasks });
                     itemsProcessed++;
-                    if (itemsProcessed === lists.length - 1) {
+                    if (itemsProcessed === lists.length) {
                         // Check if all task data has finished fetching.
                         success(this.taskData);
                         console.log("Successfully parsed list/task data");

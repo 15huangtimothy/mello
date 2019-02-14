@@ -1,18 +1,30 @@
 .t-list {
     width: 100%;
-    max-width: 25%;
-    margin: 1%;
+    max-width: 100%;
     box-shadow: rgba(0, 0, 0, 0.15) 0 0.06rem 0.06rem 0,
         rgba(0, 0, 0, 0.01) 0 0.06rem 0.1rem 0;
     border: 0.06rem solid #ebebeb;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+    height: 30%;
+}
+
+.card-header {
+    height: 3rem;
+    padding: 0.5rem 0.75rem;
+    margin: 0;
+    background-color: var(--backgroundGray);
+}
+
+.card-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 2rem;
+    color: var(--darkGray1);
 }
 
 .list-item-container {
-    padding: 3%;
     flex-grow: 1;
+    padding: 0.5rem;
     min-height: 5rem;
     width: 100%;
 }

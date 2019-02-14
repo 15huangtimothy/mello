@@ -1,14 +1,47 @@
 import React, { Component } from "react";
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { DragDropContext } from "react-beautiful-dnd";
 import TList from "./TList/TList";
 import "./Board.css";
 
+const Packery = window.Packery;
+const Draggabilly = window.Draggabilly;
+
 class Board extends Component {
-    state = { data: this.props.lists };
+    state = {
+        data: this.props.lists,
+        pckry: null
+    };
+
+    componentDidMount = () => {
+        var elem = document.querySelector(".grid");
+        var pckry = new Packery(elem, {
+            itemSelector: ".grid-item",
+            columnWidth: ".grid-sizer",
+            gutter: ".gutter-sizer",
+            percentPosition: true
+        });
+        this.setState({ pckry: pckry });
+        pckry.getItemElements().forEach(function(itemElem) {
+            var draggie = new Draggabilly(itemElem, { handle: ".handle" });
+            pckry.bindDraggabillyEvents(draggie);
+        });
+        pckry.layout();
+    };
+
+    compomentDidUnmount() {
+        this.state.pckry.destroy();
+    }
+
+    componentDidUpdate() {
+        if (this.state.pckry) {
+            this.state.pckry.reloadItems();
+            this.state.pckry.layout();
+        }
+    }
 
     onDragEnd = result => {
         /** Handle drag for list items */
-        const { destination, source, draggableId, type } = result;
+        const { destination, source, draggableId } = result;
 
         if (!destination) {
             // If dragged out of area
@@ -19,20 +52,6 @@ class Board extends Component {
             destination.index === source.index
         ) {
             // If dragged back to same place
-            return;
-        }
-
-        if (type === "column") {
-            // If dragging entire columns
-            const newColumnOrder = Array.from(this.state.data.columnOrder);
-            newColumnOrder.splice(source.index, 1);
-            newColumnOrder.splice(destination.index, 0, draggableId);
-
-            const newData = {
-                ...this.state.data,
-                columnOrder: newColumnOrder
-            };
-            this.setState({ data: newData });
             return;
         }
 
@@ -82,40 +101,30 @@ class Board extends Component {
         if (this.state.data) {
             return (
                 <DragDropContext onDragEnd={this.onDragEnd}>
-                    <Droppable
-                        droppableId="all-columns"
-                        direction="horizontal"
-                        type="column"
-                    >
-                        {provided => (
-                            <div
-                                className="container container-board"
-                                {...provided.droppableProps}
-                                ref={provided.innerRef}
-                            >
-                                {this.state.data.columnOrder.map(
-                                    (columnId, index) => {
-                                        const column = this.state.data.columns[
-                                            columnId
-                                        ];
-                                        const tasks = column.taskIds.map(
-                                            taskId =>
-                                                this.state.data.tasks[taskId]
-                                        );
-                                        return (
-                                            <TList
-                                                key={column.id}
-                                                column={column}
-                                                tasks={tasks}
-                                                index={index}
-                                            />
-                                        );
-                                    }
-                                )}
-                                {provided.placeholder}
-                            </div>
-                        )}
-                    </Droppable>
+                    <div className="container container-board">
+                        <div className="grid">
+                            <div className="gutter-sizer" />
+                            <div className="grid-sizer" />
+                            {this.state.data.columnOrder.map(
+                                (columnId, index) => {
+                                    const column = this.state.data.columns[
+                                        columnId
+                                    ];
+                                    const tasks = column.taskIds.map(
+                                        taskId => this.state.data.tasks[taskId]
+                                    );
+                                    return (
+                                        <TList
+                                            key={column.id}
+                                            column={column}
+                                            tasks={tasks}
+                                            index={index}
+                                        />
+                                    );
+                                }
+                            )}
+                        </div>
+                    </div>
                 </DragDropContext>
             );
         }

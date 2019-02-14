@@ -27,12 +27,15 @@ class Main extends Component {
 
     boardSelected = () => {
         /** Executes once a board is selected */
-        this.setBackground(true);
-
-        this.props.trelloHandler.getListTaskData(
-            this.state.selectedBoard.id,
-            this.loadLists
-        );
+        this.boardDeselected();
+        // Reset lists before loading new lists
+        this.loadLists(null, () => {
+            this.setBackground(true);
+            this.props.trelloHandler.getListTaskData(
+                this.state.selectedBoard.id,
+                this.loadLists
+            );
+        });
     };
 
     boardDeselected = () => {
@@ -51,13 +54,12 @@ class Main extends Component {
         }
     };
 
-    loadLists = l => {
+    loadLists = (l, callback = function() {}) => {
         /**
          * Callback function when list/task data is done processing by TrelloHandler.
          * List/task data returned through l.
          */
-        this.setState({ lists: null });
-        this.setState({ lists: l });
+        this.setState({ lists: l }, callback);
     };
 
     generateBoard() {
