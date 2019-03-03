@@ -1,14 +1,14 @@
 .container-board {
-    width: 95%;
+    max-width: 85%;
     padding: 0;
     margin: 1rem auto;
 }
 
 .grid-sizer,
 .grid-item {
-    width: 19%;
+    width: 18.5%;
 }
 
 .gutter-sizer {
-    width: 1%;
+    width: 1.5%;
 }

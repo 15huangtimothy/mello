@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import NavBar from "../NavBar/NavBar";
-import Board from "../Board/Board";
+import React, { Component } from 'react';
+import NavBar from '../NavBar/NavBar';
+import Board from '../Board/Board';
 
 class Main extends Component {
     state = { selectedBoard: null, lists: null };
@@ -47,10 +47,10 @@ class Main extends Component {
     setBackground = selected => {
         /** Set background image to selected board's background image */
         if (!selected) {
-            document.body.style.backgroundImage = "none";
+            document.body.style.backgroundImage = 'none';
         } else if (this.state.selectedBoard) {
             document.body.style.backgroundImage =
-                "url(" + this.state.selectedBoard.prefs.backgroundImage + ")";
+                'url(' + this.state.selectedBoard.prefs.backgroundImage + ')';
         }
     };
 
@@ -64,7 +64,12 @@ class Main extends Component {
 
     generateBoard() {
         /** Returns Board object containing loaded lists and tasks */
-        return <Board lists={this.state.lists} />;
+        return (
+            <Board
+                lists={this.state.lists}
+                trelloHandler={this.props.trelloHandler}
+            />
+        );
     }
 
     render() {

@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { DragDropContext } from "react-beautiful-dnd";
-import TList from "./TList/TList";
-import "./Board.css";
+import React, { Component } from 'react';
+import { DragDropContext } from 'react-beautiful-dnd';
+import TList from './TList/TList';
+import './Board.css';
 
 const Packery = window.Packery;
 const Draggabilly = window.Draggabilly;
@@ -13,16 +13,17 @@ class Board extends Component {
     };
 
     componentDidMount = () => {
-        var elem = document.querySelector(".grid");
+        // Set up Packery and Draggabilly
+        var elem = document.querySelector('.grid');
         var pckry = new Packery(elem, {
-            itemSelector: ".grid-item",
-            columnWidth: ".grid-sizer",
-            gutter: ".gutter-sizer",
+            itemSelector: '.grid-item',
+            columnWidth: '.grid-sizer',
+            gutter: '.gutter-sizer',
             percentPosition: true
         });
         this.setState({ pckry: pckry });
         pckry.getItemElements().forEach(function(itemElem) {
-            var draggie = new Draggabilly(itemElem, { handle: ".handle" });
+            var draggie = new Draggabilly(itemElem, { handle: '.handle' });
             pckry.bindDraggabillyEvents(draggie);
         });
         pckry.layout();
@@ -38,6 +39,17 @@ class Board extends Component {
             this.state.pckry.layout();
         }
     }
+
+    addNewTask = task => {
+        /**
+         * Handles when a new task is added to a lsit. Updates
+         * the state list data with new task included.
+         */
+        let newData = { ...this.state.data };
+        newData.columns[task.idList].taskIds.push(task.id);
+        newData.tasks[task.id] = { ...task };
+        this.setState({ data: newData });
+    };
 
     onDragEnd = result => {
         /** Handle drag for list items */
@@ -94,6 +106,7 @@ class Board extends Component {
                 }
             };
             this.setState({ data: newData });
+            this.props.trelloHandler.dragToNewColumn(finish.id, draggableId);
         }
     };
 
@@ -119,6 +132,10 @@ class Board extends Component {
                                             column={column}
                                             tasks={tasks}
                                             index={index}
+                                            trelloHandler={
+                                                this.props.trelloHandler
+                                            }
+                                            onAddNewTask={this.addNewTask}
                                         />
                                     );
                                 }

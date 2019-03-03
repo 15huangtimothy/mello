@@ -25,6 +25,38 @@
 .list-item-container {
     flex-grow: 1;
     padding: 0.5rem;
-    min-height: 5rem;
+    min-height: 2rem;
     width: 100%;
+}
+
+.new-task-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.1rem;
+}
+
+.btn-new-task {
+    margin: 0;
+    padding: 0;
+}
+
+.material-icons {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--darkGray1);
+    vertical-align: middle;
+}
+
+.new-task-input {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 0.25rem;
+}
+
+.btn-new-task-submit {
+    max-width: 50%;
+    margin-top: 0.4rem;
+    padding: 0 0.3rem;
+    color: white;
+    background-color: var(--mediumBlue);
 }
