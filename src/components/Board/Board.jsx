@@ -12,7 +12,7 @@ class Board extends Component {
         pckry: null
     };
 
-    componentDidMount = () => {
+    componentDidMount() {
         // Set up Packery and Draggabilly
         var elem = document.querySelector('.grid');
         var pckry = new Packery(elem, {
@@ -27,7 +27,7 @@ class Board extends Component {
             pckry.bindDraggabillyEvents(draggie);
         });
         pckry.layout();
-    };
+    }
 
     compomentDidUnmount() {
         this.state.pckry.destroy();
@@ -48,6 +48,41 @@ class Board extends Component {
         let newData = { ...this.state.data };
         newData.columns[task.idList].taskIds.push(task.id);
         newData.tasks[task.id] = { ...task };
+        this.setState({ data: newData });
+    };
+
+    deleteTask = task => {
+        /**
+         * Handles when a task is to be deleted.
+         */
+        this.props.trelloHandler.deleteTask(
+            task.idList,
+            task.id,
+            this.taskDeleted
+        );
+    };
+
+    taskDeleted = (columnID, taskID) => {
+        /**
+         * Executes when a task is deleted. Updates the state list
+         * data to remove the task. columnID is id of column containing
+         * deleted task and taskID is the deleted task's id.
+         */
+        const start = this.state.data.columns[columnID];
+        const startTaskIds = Array.from(start.taskIds);
+
+        startTaskIds.splice(startTaskIds.indexOf(taskID), 1);
+        const newStart = {
+            ...start,
+            taskIds: startTaskIds
+        };
+        const newData = {
+            ...this.state.data,
+            columns: {
+                ...this.state.data.columns,
+                [newStart.id]: newStart
+            }
+        };
         this.setState({ data: newData });
     };
 
@@ -136,6 +171,7 @@ class Board extends Component {
                                                 this.props.trelloHandler
                                             }
                                             onAddNewTask={this.addNewTask}
+                                            onDeleteTask={this.deleteTask}
                                         />
                                     );
                                 }

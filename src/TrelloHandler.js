@@ -176,7 +176,7 @@ class TrelloHandler {
 
     addNewTask = (columnID, newTaskName, success) => {
         /**
-         * Adds a new task (card) to a list. ColumnID is Trello ID of list that
+         * Adds a new task (card) to a list. columnID is Trello ID of list that
          * is being added to, newTaskName is name of the new task being added,
          * and the success callback function receives the newly created Trello task
          * object.
@@ -189,6 +189,24 @@ class TrelloHandler {
             },
             function() {
                 console.log('Card create unsuccessful');
+            }
+        );
+    };
+
+    deleteTask = (columnID, taskID, success) => {
+        /**
+         * Deletes a task. columID is Trello ID of list containing the task
+         * to be deleted, taskID is Trello ID of card to be deleted, and success
+         * callbackback function receives the columnID and taskID.
+         */
+        this.Trello.delete(
+            '/cards/' + taskID,
+            function() {
+                success(columnID, taskID);
+                console.log('Card delete successful');
+            },
+            function() {
+                console.log('Card delete unsuccessful');
             }
         );
     };

@@ -1,17 +1,20 @@
 .t-list {
     width: 100%;
     max-width: 100%;
-    box-shadow: rgba(0, 0, 0, 0.15) 0 0.06rem 0.06rem 0,
-        rgba(0, 0, 0, 0.01) 0 0.06rem 0.1rem 0;
+    box-shadow: 0 0.05rem 0.2rem 0 rgba(0, 0, 0, 0.2),
+        0 0.1rem 0.1rem 0 rgba(0, 0, 0, 0.14),
+        0 0.15rem 0.05rem -0.1rem rgba(0, 0, 0, 0.12);
     border: 0.06rem solid #ebebeb;
     height: 30%;
+    background-color: var(--foregroundWhite);
 }
 
 .card-header {
     height: 3rem;
     padding: 0.5rem 0.75rem;
     margin: 0;
-    background-color: var(--backgroundGray);
+    background-color: var(--paleGray1);
+    cursor: grab;
 }
 
 .card-title {
@@ -40,17 +43,25 @@
     padding: 0;
 }
 
-.material-icons {
+.add-icon {
     font-size: 1.3rem;
     font-weight: 600;
     color: var(--darkGray1);
     vertical-align: middle;
+    transition: all 0.15s linear;
+}
+
+.add-icon:hover {
+    color: var(--statusBlue);
 }
 
 .new-task-input {
     width: 100%;
     max-width: 100%;
     padding: 0 0.25rem;
+    font-size: 0.9rem;
+    margin: 0;
+    height: 2rem;
 }
 
 .btn-new-task-submit {

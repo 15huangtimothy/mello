@@ -1,9 +1,7 @@
-import React, { Component } from "react";
-import "./Login.css";
+import React, { Component } from 'react';
+import './Login.css';
 
 class Login extends Component {
-    state = {};
-
     render() {
         return (
             <div className="container login-container">

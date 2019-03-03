@@ -1,14 +1,14 @@
 .login-container {
-    border-radius: 0.25rem;
+    border-radius: 0.3rem;
     margin: 10% auto;
     float: none;
     width: 90%;
-    max-width: 25rem;
-    padding: 1rem;
+    max-width: 20%;
+    padding: 3rem 1rem;
     overflow: hidden;
     background: var(--foregroundWhite);
-    box-shadow: rgba(0, 0, 0, 0.15) 0 0.06rem 0.06rem 0,
-        rgba(0, 0, 0, 0.01) 0 0.06rem 0.1rem 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 0.1rem 0.2rem 0,
+        rgba(0, 0, 0, 0.05) 0 0.1rem 0.2rem 0;
     border: 0.06rem solid #ebebeb;
 }
 
@@ -16,6 +16,7 @@
     color: var(--melloBlue);
     font-family: proxima-nova;
     font-weight: 500;
+    padding: 0;
     line-height: normal;
     font-size: 5.5rem;
     text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.15);
@@ -30,9 +31,9 @@
     margin: 2.5rem auto 5rem auto;
     background: var(--mediumBlue);
     border: 0;
-    border-bottom: 2px solid var(--riverBlue);
-    box-shadow: rgba(0, 0, 0, 0.15) 0 0.06rem 0.06rem 0,
-        rgba(0, 0, 0, 0.01) 0 0.06rem 0.1rem 0;
+    border-bottom: 0.15rem solid var(--riverBlue);
+    box-shadow: rgba(0, 0, 0, 0.2) 0 0.06rem 0.06rem 0,
+        rgba(0, 0, 0, 0.05) 0 0.06rem 0.1rem 0;
     padding: 0.75rem 0.5rem;
     font-size: 1rem;
     color: white;

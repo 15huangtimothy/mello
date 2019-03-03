@@ -1,15 +1,48 @@
 .list-item {
     border: 0.06rem solid lightgrey;
     border-radius: 0.3rem;
-    padding: 0.4rem;
     margin-bottom: 0.4rem;
+    padding: 0.4rem;
     background-color: white;
-    transition: background-color 0.1s ease;
+    transition: background-color 0.2s ease;
     font-size: 0.9rem;
+    overflow: hidden;
+    vertical-align: middle;
+    cursor: grab;
+    box-shadow: 0 0.025rem 0.05rem rgba(0, 0, 0, 0.04),
+        0 0.025rem 0.05rem rgba(0, 0, 0, 0.08);
+}
+
+.list-item p {
+    display: inline-block;
+    max-width: 90%;
+    margin: 0;
+    padding: 0;
 }
 
 .list-item:hover {
-    background: #f6f6f6;
+    background-color: var(--lightGray2);
+}
+
+.list-item i {
+    font-size: 1.4rem;
+    vertical-align: middle;
+    margin: auto 0.2rem auto 0;
+    float: right;
+    clear: both;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.15s linear;
+    cursor: pointer;
+}
+
+.list-item:hover i {
+    visibility: visible;
+    opacity: 1;
+}
+
+.list-item:hover i:hover {
+    color: var(--statusBlue);
 }
 
 .on-drag {

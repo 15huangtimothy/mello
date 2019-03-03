@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import SelectBoard from "./SelectBoard";
-import "./NavBar.css";
+import React, { Component } from 'react';
+import SelectBoard from './SelectBoard';
+import './NavBar.css';
 
 class NavBar extends Component {
     state = { memberID: null };
@@ -14,9 +14,9 @@ class NavBar extends Component {
     generateAccountLink = () => {
         /** Generates a link to the user's Trello account settings page */
         if (this.state.memberID) {
-            return "https://trello.com/" + this.state.memberID + "/account";
+            return 'https://trello.com/' + this.state.memberID + '/account';
         } else {
-            return "#";
+            return '#';
         }
     };
 
@@ -41,7 +41,10 @@ class NavBar extends Component {
                         href={this.generateAccountLink()}
                         className="account-icon align-middle"
                     >
-                        <i className="material-icons align-middle">
+                        <i
+                            className="material-icons align-middle"
+                            title="Account Settings"
+                        >
                             account_circle
                         </i>
                     </a>

@@ -1,15 +1,16 @@
 .navbar {
-    background: rgba(4, 159, 217, 0.7);
+    background: rgba(9, 125, 188, 0.7);
     text-align: center;
     padding: 0.5rem 1rem;
     box-shadow: 0 0.06rem 0.3rem 0 rgba(0, 0, 0, 0.2),
         0 0.1rem 0.1rem 0 rgba(0, 0, 0, 0.14),
         0 0.2rem 0.1rem -0.1rem rgba(0, 0, 0, 0.12);
+    margin-bottom: 2rem;
 }
 
 .navbar-title {
     line-height: 0;
-    font-weight: 100;
+    font-weight: 500;
     font-size: 1.75rem;
     color: white;
     margin: 0 auto;
@@ -29,11 +30,12 @@
 
 .account-icon {
     color: white;
-    transition: all 0.15s ease;
+    opacity: 0.9;
+    transition: all 0.2s ease;
 }
 
 .account-icon:hover {
-    color: var(--backgroundGray);
+    color: var(--lightGray1);
 }
 
 @media screen and (min-width: 768px) {

@@ -6,19 +6,30 @@ import './TList.css';
 class TList extends Component {
     state = { addingNewTask: false, newTask: null };
 
+    componentWillUnmount() {
+        document.removeEventListener('mousedown', this.handleClick, false);
+        document.removeEventListener('keydown', this.handleKeyDown, false);
+    }
+
     newTaskButton() {
         /**
          * Conditionally generates and returns the add new task button
          * or input field for entering a new task name.
          */
+        document.removeEventListener('mousedown', this.handleClick, false);
+        document.removeEventListener('keydown', this.handleKeyDown, false);
         if (this.state.addingNewTask) {
+            // Add listeners to detect when to exit form.
+            document.addEventListener('mousedown', this.handleClick, false);
+            document.addEventListener('keydown', this.handleKeyDown, false);
             return (
                 <form
                     className="new-task-container"
+                    ref={node => (this.node = node)}
                     onSubmit={this.onSubmitNewTask}
                 >
                     <input
-                        className="new-task-input"
+                        className="form-control new-task-input"
                         type="text"
                         value={this.state.value}
                         placeholder="Enter New Task"
@@ -36,11 +47,12 @@ class TList extends Component {
                 <div className="new-task-container">
                     <button
                         className="btn btn-new-task"
+                        title="Add New Task"
                         onClick={() => {
                             this.setState({ addingNewTask: true });
                         }}
                     >
-                        <i className="material-icons">add</i>
+                        <i className="material-icons add-icon">add</i>
                     </button>
                 </div>
             );
@@ -55,12 +67,37 @@ class TList extends Component {
     onSubmitNewTask = event => {
         /** Handles submit button when creating a new task */
         event.preventDefault();
+        if (!this.state.newTask) {
+            return;
+        }
         this.props.trelloHandler.addNewTask(
             this.props.column.id,
             this.state.newTask,
             this.props.onAddNewTask
         );
         this.setState({ addingNewTask: false, newTask: null });
+    };
+
+    handleClick = e => {
+        if (!this.node.contains(e.target)) {
+            // Checks if click is outside of component area
+            this.exitForm();
+        }
+    };
+
+    exitForm = () => {
+        /**
+         * Exits form to add a new task when escape is pressed or mouse
+         * is clicked outside of component area.
+         */
+        this.setState({ addingNewTask: false, newTask: null });
+    };
+
+    handleKeyDown = e => {
+        if (e.keyCode === 27) {
+            // Detects escape key button presses
+            this.exitForm();
+        }
     };
 
     render() {
@@ -82,10 +119,11 @@ class TList extends Component {
                                         key={task.id}
                                         task={task}
                                         index={index}
+                                        onDeleteTask={this.props.onDeleteTask}
                                     />
                                 ))}
-                                {this.newTaskButton()}
                                 {provided.placeholder}
+                                {this.newTaskButton()}
                             </div>
                         )}
                     </Droppable>

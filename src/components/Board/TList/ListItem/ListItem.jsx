@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { Draggable } from "react-beautiful-dnd";
-import "./ListItem.css";
+import React, { Component } from 'react';
+import { Draggable } from 'react-beautiful-dnd';
+import './ListItem.css';
 
 class ListItem extends Component {
     state = {};
@@ -14,14 +14,21 @@ class ListItem extends Component {
                 {(provided, snapshot) => (
                     <div
                         className={
-                            "list-item" +
-                            (snapshot.isDragging ? " on-drag" : "")
+                            'list-item' +
+                            (snapshot.isDragging ? ' on-drag' : '')
                         }
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         ref={provided.innerRef}
                     >
-                        {this.props.task.name}
+                        <p>{this.props.task.name}</p>
+                        <i
+                            className="far fa-check-square"
+                            title="Delete Task"
+                            onClick={() => {
+                                this.props.onDeleteTask(this.props.task);
+                            }}
+                        />
                     </div>
                 )}
             </Draggable>

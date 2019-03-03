@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NavBar from '../NavBar/NavBar';
 import Board from '../Board/Board';
+import './Main.css';
 
 class Main extends Component {
     state = { selectedBoard: null, lists: null };
@@ -72,6 +73,10 @@ class Main extends Component {
         );
     }
 
+    selectBoardMessage() {
+        return <h2 className="select-board-message">Please Select a Board</h2>;
+    }
+
     render() {
         return (
             <div>
@@ -79,6 +84,7 @@ class Main extends Component {
                     trelloHandler={this.props.trelloHandler}
                     onSelect={this.handleSelect}
                 />
+                {!this.state.selectedBoard && this.selectBoardMessage()}
                 {this.state.lists && this.generateBoard()}
             </div>
         );
