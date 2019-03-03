@@ -1,15 +1,15 @@
 {
-  "main.css": "/mello/static/css/main.379ebd96.chunk.css",
-  "main.js": "/mello/static/js/main.274c38f5.chunk.js",
-  "main.js.map": "/mello/static/js/main.274c38f5.chunk.js.map",
+  "main.css": "/mello/static/css/main.6e87766e.chunk.css",
+  "main.js": "/mello/static/js/main.0ac9515f.chunk.js",
+  "main.js.map": "/mello/static/js/main.0ac9515f.chunk.js.map",
   "runtime~main.js": "/mello/static/js/runtime~main.0af0ff13.js",
   "runtime~main.js.map": "/mello/static/js/runtime~main.0af0ff13.js.map",
   "static/css/2.dd922ddd.chunk.css": "/mello/static/css/2.dd922ddd.chunk.css",
-  "static/js/2.b67dbce7.chunk.js": "/mello/static/js/2.b67dbce7.chunk.js",
-  "static/js/2.b67dbce7.chunk.js.map": "/mello/static/js/2.b67dbce7.chunk.js.map",
+  "static/js/2.8314f76e.chunk.js": "/mello/static/js/2.8314f76e.chunk.js",
+  "static/js/2.8314f76e.chunk.js.map": "/mello/static/js/2.8314f76e.chunk.js.map",
   "index.html": "/mello/index.html",
-  "precache-manifest.87edc3bd51ea9f6fa016bf98c473bde4.js": "/mello/precache-manifest.87edc3bd51ea9f6fa016bf98c473bde4.js",
+  "precache-manifest.643812b5ca2c6b963b180796415c3c7a.js": "/mello/precache-manifest.643812b5ca2c6b963b180796415c3c7a.js",
   "service-worker.js": "/mello/service-worker.js",
   "static/css/2.dd922ddd.chunk.css.map": "/mello/static/css/2.dd922ddd.chunk.css.map",
-  "static/css/main.379ebd96.chunk.css.map": "/mello/static/css/main.379ebd96.chunk.css.map"
+  "static/css/main.6e87766e.chunk.css.map": "/mello/static/css/main.6e87766e.chunk.css.map"
 }
