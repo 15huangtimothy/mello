@@ -1,10 +1,10 @@
 .login-container {
-    border-radius: 0.3rem;
-    margin: 10% auto;
+    border-radius: 0.5rem;
+    margin: 10% auto 0.5% auto;
     float: none;
     width: 90%;
-    max-width: 20%;
-    padding: 3rem 1rem;
+    max-width: 27rem;
+    padding: 3rem 3rem;
     overflow: hidden;
     background: var(--foregroundWhite);
     box-shadow: rgba(0, 0, 0, 0.1) 0 0.1rem 0.2rem 0,
@@ -13,12 +13,12 @@
 }
 
 .login-container .title {
-    color: var(--melloBlue);
+    color: var(--mediumBlue);
     font-family: proxima-nova;
-    font-weight: 500;
+    font-weight: 600;
     padding: 0;
     line-height: normal;
-    font-size: 5.5rem;
+    font-size: 5.25rem;
     text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.15);
     margin: 3rem auto 2.5rem auto;
 }
@@ -42,4 +42,27 @@
 .login-btn:hover {
     background: var(--melloBlue);
     color: white;
+}
+
+.created-by {
+    text-align: center;
+    margin: 0;
+    color: var(--lightGray1);
+}
+
+.created-by a {
+    color: inherit;
+    text-decoration: none;
+    transition: border 0.1s linear;
+    border-bottom: 0.05rem dotted rgba(198, 199, 202, 0);
+}
+
+.created-by a:hover {
+    border-bottom: 0.05rem dotted rgba(198, 199, 202, 1);
+}
+
+@media only screen and (max-width: 600px) {
+    .login-container {
+        max-width: 75%;
+    }
 }

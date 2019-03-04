@@ -10,6 +10,13 @@ body {
     float: none;
 }
 
+/** Media Queries */
+@media only screen and (max-width: 600px) {
+    html {
+        font-size: 12px;
+    }
+}
+
 /** Global Variables */
 :root {
     --primaryBlue: #01579b;

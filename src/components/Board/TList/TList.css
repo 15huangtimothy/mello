@@ -6,14 +6,14 @@
         0 0.15rem 0.05rem -0.1rem rgba(0, 0, 0, 0.12);
     border: 0.06rem solid #ebebeb;
     height: 30%;
-    background-color: var(--foregroundWhite);
+    background-color: rgba(244, 247, 252, 0.97);
 }
 
 .card-header {
     height: 3rem;
     padding: 0.5rem 0.75rem;
     margin: 0;
-    background-color: var(--paleGray1);
+    background-color: var(--foregroundWhite);
     cursor: grab;
 }
 

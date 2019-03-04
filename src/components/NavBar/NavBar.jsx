@@ -34,7 +34,7 @@ class NavBar extends Component {
                     </ul>
                 </div>
                 <div className="col-sm-6">
-                    <h1 className="title navbar-title align-middle">mello.</h1>
+                    <h1 className="title navbar-title align-middle">mello</h1>
                 </div>
                 <div className="col-sm-3 text-right">
                     <a

@@ -11,7 +11,7 @@ class TrelloHandler {
         /** Authorize Trello Account. Returns true to callback if authorization successful. */
         this.Trello.authorize({
             type: 'popup',
-            name: 'mello.',
+            name: 'mello',
             scope: {
                 read: true,
                 write: true
