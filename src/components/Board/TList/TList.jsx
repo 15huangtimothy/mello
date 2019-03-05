@@ -4,7 +4,11 @@ import ListItem from './ListItem/ListItem';
 import './TList.css';
 
 class TList extends Component {
-    state = { addingNewTask: false, newTask: null };
+    state = { addingNewTask: false, newTask: null, open: 'hidden' };
+
+    componentDidMount() {
+        this.setState({ open: 'visible' });
+    }
 
     componentWillUnmount() {
         document.removeEventListener('mousedown', this.handleClick, false);
@@ -103,7 +107,7 @@ class TList extends Component {
     render() {
         return (
             <div className="grid-item">
-                <div className="card t-list">
+                <div className={'card t-list ' + this.state.open}>
                     <div className="card-header handle">
                         <p className="card-title">{this.props.column.name}</p>
                     </div>

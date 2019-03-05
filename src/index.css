@@ -2,7 +2,9 @@ body {
     position: relative;
     background-color: var(--backgroundGray);
     background-size: cover;
+    background-repeat: no-repeat;
     font-family: proxima-nova, sans-serif;
+    height: 100%;
 }
 
 .center-block {

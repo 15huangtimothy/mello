@@ -9,8 +9,8 @@
     overflow: hidden;
     vertical-align: middle;
     cursor: grab;
-    box-shadow: 0 0.025rem 0.05rem rgba(0, 0, 0, 0.04),
-        0 0.025rem 0.05rem rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.08),
+        0 0.05rem 0.05rem rgba(0, 0, 0, 0.1);
 }
 
 .list-item p {
