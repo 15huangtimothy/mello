@@ -1,6 +1,6 @@
 # mello
 
-One Paragraph of project description goes here
+A Trello-based UI geared towards personal to-do lists instead of team project management. Site at: https://15huangtimothy.github.io/mello
 
 ## Motivation
 
