@@ -16,7 +16,7 @@ class TrelloHandler {
                 read: true,
                 write: true
             },
-            expiration: 'never',
+            expiration: '30days',
             success: function() {
                 callback(true);
                 this.authorized = true;
