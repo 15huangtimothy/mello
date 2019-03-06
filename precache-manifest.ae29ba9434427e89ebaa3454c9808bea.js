@@ -4,15 +4,15 @@ self.__precacheManifest = [
     "url": "/mello/static/js/runtime~main.0af0ff13.js"
   },
   {
-    "revision": "cbc00f7f1b4ad0ca4230",
-    "url": "/mello/static/js/main.cbc00f7f.chunk.js"
+    "revision": "87cde4ec5b84a8bd6703",
+    "url": "/mello/static/js/main.87cde4ec.chunk.js"
   },
   {
     "revision": "8314f76e2a4c51ae50ba",
     "url": "/mello/static/js/2.8314f76e.chunk.js"
   },
   {
-    "revision": "cbc00f7f1b4ad0ca4230",
+    "revision": "87cde4ec5b84a8bd6703",
     "url": "/mello/static/css/main.b07b8157.chunk.css"
   },
   {
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/mello/static/css/2.dd922ddd.chunk.css"
   },
   {
-    "revision": "97eb261028d8c841e33dae0acb8113d1",
+    "revision": "b54932dcd7e9658b6ac78ccace155905",
     "url": "/mello/index.html"
   }
 ];
