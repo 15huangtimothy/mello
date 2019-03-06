@@ -1,4 +1,6 @@
-# mello
+
+# mello 
+![](public/favicon.ico)
 
 A Trello-based UI geared towards personal to-do lists instead of team project management.
 
