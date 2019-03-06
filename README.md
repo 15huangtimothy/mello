@@ -55,7 +55,3 @@ I've been wanting to gain more experience with React and this offered a great op
 * [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd)
 * [Packery](https://packery.metafizzy.co/)
 * [Trello API](https://developers.trello.com/)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
