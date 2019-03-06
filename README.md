@@ -45,7 +45,7 @@ I've been wanting to gain more experience with React and this offered a great op
 * Designed to be usable on both desktop and mobile
 
 <p align="center">
-  <img src="markdown-images/5-min.gif" height="800">
+  <img src="markdown-images/5-min.gif" height="640">
 </p>
 
 ## Built With
