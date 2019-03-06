@@ -14,18 +14,47 @@ Trello is widely used project management tool providing collaborative kanban sty
 
 I've been wanting to gain more experience with React and this offered a great opportunity for my first React project. I wanted to make a web app that would link with my Trello account and display my data in a format more geared towards personal to-do lists, particularly focusing on both horizontal and vertical stacking of tasklists to allow for a birds-eye view of all current tasks at a quick glance without the need for any awkward horizontal scrolling.
 
-
 ## Features
 
-### asdf
+#### Automatic tasklist grid generation
 
-asdf
+* Compiles all Trello tasks and tasklists into an intuitive drag-and-drop grid layout without horizontal scrolling.
+
+<p align="center">
+  <img src="markdown-images/2-min.gif" width="640">
+</p>
+
+#### Trello Account Integration
+
+* Syncs data with existing Trello account through Trello's API, including creating new tasks, checking off existing tasks, and loading each board's custom background image.
+
+<p align="center">
+  <img src="markdown-images/4-min.gif" width="640">
+</p>
+
+#### Drag-and-drop functionality
+
+* Mobile/touch compatible drag-and-drop functionality for both tasklists and individual tasks.
+
+<p align="center">
+  <img src="markdown-images/3-min.gif" width="640">
+</p>
+
+#### Mobile-responsive
+
+* Designed to be usable on both desktop and mobile
+
+<p align="center">
+  <img src="markdown-images/5-min.gif" width="640">
+</p>
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [React](https://reactjs.org/)
+* [Bootstrap](https://getbootstrap.com/) 
+* [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd)
+* [Packery](https://packery.metafizzy.co/)
+* [Trello API](https://developers.trello.com/)
 
 ## License
 
