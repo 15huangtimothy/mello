@@ -16,6 +16,7 @@ class TrelloHandler {
                 read: true,
                 write: true
             },
+            persist: false,
             expiration: '30days',
             success: function() {
                 callback(true);
