@@ -18,7 +18,7 @@ I've been wanting to gain more experience with React and this offered a great op
 
 ## Features
 
-#### Automatic tasklist grid generation
+### Automatic tasklist grid generation
 
 * Compiles all Trello tasks and tasklists into an intuitive drag-and-drop grid layout without horizontal scrolling.
 
@@ -26,7 +26,7 @@ I've been wanting to gain more experience with React and this offered a great op
   <img src="markdown-images/2-min.gif" width="800">
 </p>
 
-#### Trello Account Integration
+### Trello Account Integration
 
 * Syncs data with existing Trello account through Trello's API, including creating new tasks, checking off existing tasks, and loading each board's custom background image.
 
@@ -34,7 +34,7 @@ I've been wanting to gain more experience with React and this offered a great op
   <img src="markdown-images/4-min.gif" width="800">
 </p>
 
-#### Drag-and-drop functionality
+### Drag-and-drop functionality
 
 * Mobile/touch compatible drag-and-drop functionality for both tasklists and individual tasks.
 
@@ -42,7 +42,7 @@ I've been wanting to gain more experience with React and this offered a great op
   <img src="markdown-images/3-min.gif" width="800">
 </p>
 
-#### Mobile-responsive
+### Mobile-responsive
 
 * Designed to be usable on both desktop and mobile
 
